@@ -2,7 +2,7 @@
 ## Using Node for the first time!
 This is the final version of what we did in class this week.
 
-This is the Express version; the core Node version can be found on the node.js website under the About tab.
+This is the Express version; the core Node version can be found on the [node.js website](https://nodejs.org/en/about/).
 
 ## Requirements / Getting Set Up
 Node, NPM and Express
