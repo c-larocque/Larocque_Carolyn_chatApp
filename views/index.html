@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Servin stuff with Node!</title>
+	<meta charset="UTF-8">
+	<title>Socket IO Chat with Node!</title>
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <h1>This is my first full-stack project. Node is awesome!</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga rem, quisquam eveniet, veniam voluptatem quis impedit officia eius, delectus natus, itaque qui vel. Quas perferendis, iure eligendi consequuntur. Libero, voluptas.
-  </p>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="js/main.js"></script>
+	<input type="text" class="nickname" placeholder="What is your nickname?">
+	<ul id="messages"></ul>
+	<form>
+		<input class="message" type="text" id="m" autocomplete="off">
+		<button>send</button>
+	</form>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/main.min.js"></script>
 </body>
 </html>
