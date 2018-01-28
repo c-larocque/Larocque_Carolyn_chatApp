@@ -1,24 +1,16 @@
 const express = require('express'); // just like an include or require with PHP
 const app = express(); // create an instance of our application via simpleExpress
-const logger = require('./myModule');
+const logger = require('./utils/myModule');
 
+// env vars
 const PORT = process.env.port;
 
-let something = "somethingElse";
+app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  logger.logIt(process.env.dbuser)
-  res.sendFile(__dirname + '/index.html')
-});
-
-app.get('/contact', (req, res) => {
-  logger.logIt('hit contact route')
-  res.sendFile(__dirname + '/contact.html')
-});
-
-app.get('/users', (req, res) => {
-  res.sendFile(__dirname + '/users.html')
-});
+// import routes
+app.use(require('./routes/index'));
+app.use(require('./routes/contact'));
+app.use(require('./routes/users'));
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}!`);
