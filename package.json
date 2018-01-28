@@ -4,14 +4,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "compile-safe" : "npx babel app.js -o ./dist/app_compiled.js --presets=es2015",
-    "run-dev" : "set -a && source source.env nodemon app"
+    "compile-safe": "npx babel app.js -o ./dist/app_compiled.js --presets=es2015",
+    "run-dev": "set -a && source source.env nodemon app"
   },
   "keywords": [],
   "author": "TVR",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
