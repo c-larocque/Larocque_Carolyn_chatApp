@@ -1,8 +1,7 @@
 // initialize our app and tell it to use some plugins from the modules folder
 const express = require('express');
 const app = express();
-//var http = require('http').Server(app);
-const io = require('socket.io')(); //(http)
+const io = require('socket.io')();
 
 // some config stuff
 const PORT = process.env.port || 3000;
