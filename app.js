@@ -39,4 +39,4 @@ io.on('connection', function(socket) {
 		msg = `${socket.id} has left the building!`;
 		io.emit('disconnect message', msg);
 	});
-}
+});
