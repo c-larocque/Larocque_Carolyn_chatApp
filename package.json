@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "compile-safe": "npx babel app.js -o ./dist/app_compiled.js --presets=es2015",
-    "run-dev": "set -a && source source.env nodemon app"
+    "test": "nothin"
   },
   "keywords": [],
   "author": "TVR",
