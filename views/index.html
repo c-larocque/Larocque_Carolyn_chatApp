@@ -2,17 +2,41 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Socket IO Chat with Node!</title>
+	<title>Let's Get Chatting!</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,600%7CRoboto:300,400" rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<input type="text" class="nickname" placeholder="What is your nickname?">
-	<ul id="messages"></ul>
-	<form>
-		<input class="message" type="text" id="m" autocomplete="off">
-		<button>send</button>
-	</form>
+	<div id="nicknameCon">
+		<h2>What is your nickname?</h2>
+		<input type="text" class="nickname">
+	</div>
+	<div id="chatCon">
+		<h2>Chatroom #1</h2>
+		<div id="usersPanel">
+			<p class="online">Users Online:</p>
+			<ul class="userList"></ul>
+			<p class="typing"></p>
+		</div>
+		<div id="messagesPanel">
+			<ul id="messages"></ul>
+			<form>
+				<input class="message" type="text" id="m" autocomplete="off">
+				<button>SEND</button>
+			</form>
+		</div>
+	</div>
+
+	<div id="error-container">
+			<span>That username exists, please enter another</span>
+      <input id = "name" type = "text" name = "name" value = ""
+         placeholder = "Enter your name!">
+      <button type = "button" name = "button" onclick = "setUsername()">
+         Let me chat!
+      </button>
+	</div>
+
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="js/main.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
