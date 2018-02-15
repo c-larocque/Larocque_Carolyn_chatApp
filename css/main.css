@@ -35,6 +35,10 @@ h2, h3, h4 {
     font-weight: 300; }
     #nicknameCon input:focus {
       outline: 0; }
+  #nicknameCon #error-message {
+    display: none; }
+  #nicknameCon .show-errors {
+    display: block !important; }
 
 #chatCon {
   background-color: #D2ECFF;
@@ -51,6 +55,10 @@ h2, h3, h4 {
   #chatCon #usersPanel {
     background-color: rgba(255, 255, 255, 0.3);
     padding: 15px; }
+    #chatCon #usersPanel p {
+      font-weight: 400; }
+    #chatCon #usersPanel ul {
+      margin-left: 20px; }
   #chatCon #messagesPanel {
     padding: 20px; }
     #chatCon #messagesPanel #messages {

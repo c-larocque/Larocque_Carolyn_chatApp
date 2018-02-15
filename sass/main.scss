@@ -12,8 +12,6 @@ $body: 'Roboto', Arial, sans-serif;
 
 $lightGrey: rgba(0,0,0,.15);
 $offWhite: rgba(255,255,255,.7);
-// $lightGrey: #c7c7c7;
-// $offWhite: #f7f7f7;
 
 body {
 	background-color: #E7EBEB;
@@ -24,10 +22,6 @@ body {
 h2, h3, h4 {
 	font-family: $heading;
 }
-
-#error-container { display: none; }
-
-.show-errors { display: inline-block !important; }
 
 #nicknameCon {
 	background-color: #000;
@@ -59,6 +53,14 @@ h2, h3, h4 {
 			outline: 0;
 		}
 	}
+
+	#error-message {
+		display: none;
+	}
+
+	.show-errors {
+		display: block !important;
+	}
 }
 
 #chatCon {
@@ -79,6 +81,14 @@ h2, h3, h4 {
 	#usersPanel {
 		background-color: rgba(255,255,255,.3);
 		padding: 15px;
+
+		p {
+			font-weight: 400;
+		}
+
+		ul {
+			margin-left: 20px;
+		}
 	}
 
 	#messagesPanel {
