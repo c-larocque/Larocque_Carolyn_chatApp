@@ -2,7 +2,7 @@
 	const socket = io(); // a constant is a variable that should never change (remains constant)
 	//const socket = io('/my-namespace');
 
-	let messageList = document.querySelector('ul'),
+	let messageList = document.querySelector('#messages'),
 			chatForm 	= document.querySelector('form'),
 			nameInput	= document.querySelector('.nickname'),
 			nickName 	= null,
@@ -12,7 +12,7 @@
 	function setNickname() {
 		nickName = this.value;
 		console.log(nickName);
-		//socket.emit('setUsername', this.value);
+		socket.emit('setUsername', this.value);
 	}
 
 	// var room = "abc123";
@@ -21,40 +21,18 @@
 	// 	socket.emit('room', room);
 	// });
 
-	socket.on('message', function(data) {
-		console.log('Incoming message:', data);
-	});
-
 	function setUsername() {
-         socket.emit('setUsername', document.getElementById('name').value);
-      };
-      var user;
-      socket.on('userExists', function(data) {
-         document.getElementById('error-container').innerHTML = data;
-      });
-      socket.on('userSet', function(data) {
-         user = data.username;
-         document.body.innerHTML = '<input type = "text" id = "message">\
-         <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
-         <div id = "message-container"></div>';
-      });
+       socket.emit('setUsername', document.querySelector('#name').value);
+    };
 
-      function sendMessage() {
-         var msg = document.getElementById('message').value;
-         if(msg) {
-            socket.emit('msg', {message: msg, user: user});
-         }
-      }
-      socket.on('newmsg', function(data) {
-         if(user) {
-            document.getElementById('message-container').innerHTML += '<div><b>' +
-               data.user + '</b>: ' + data.message + '</div>'
-         }
-      })
+    //var user;
+    function handleUserError(msg) {
+			document.querySelector('#error-container').classList.add('show-errors');
+		}
 
-			// socket.on('typing', function (msg) {
-		  //    io.emit('typing', { 'message': msg.message, 'username': msg.username });
-			// });
+		// socket.on('typing', function (msg) {
+	  //    io.emit('typing', { 'message': msg.message, 'username': msg.username });
+		// });
 
 	function handleSendMessage(e) {
 		e.preventDefault(); // kill form submit
@@ -68,7 +46,7 @@
 
 	function appendMessage(msg) {
 		// will it get passed thru?
-		debugger;
+		//debugger;
 		let newMsg = `<li>${msg.message}</li>`
 		messageList.innerHTML += newMsg;
 	}
@@ -79,7 +57,7 @@
 	}
 
 	function addUserToList(user) {
-		let newUser = `<li>${user}</li>`;
+		let newUser = `<li>${user.username}</li>`;
 		userList.innerHTML += newUser;
 	}
 
@@ -92,4 +70,5 @@
 	socket.addEventListener('chat message', appendMessage, false);
 	socket.addEventListener('disconnect message', appendDMessage, false);
 	socket.addEventListener('userSet', addUserToList, false);
+	socket.addEventListener('userExists', handleUserError, false);
 })();

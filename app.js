@@ -18,10 +18,11 @@ const server = app.listen(3000, function() {
 	console.log('listening on localhost:3000');
 });
 
-const users = [];
+
 
 io.attach(server);
 
+var users = [];
 var numClients = 0;
 
 // plug in socket.io
@@ -33,12 +34,14 @@ io.on('connection', function(socket) {
 	});
 
 	socket.on('setUsername', function(data) {
+		console.log('Username coming from client ', data);
       if(users.indexOf(data) > -1) {
-				console.log('Username coming from client ', data);
-         users.push(data);
-         socket.emit('userSet', {username: data});
+				console.log('username taken');
+				socket.emit('userExists', data);
       } else {
-         socket.emit('userExists', data + ' username is taken! Try some other username.');
+				users.push(data);
+				console.log(`users in array: ${users}`);
+				socket.emit('userSet', {username: data});
       }
    });
 

@@ -25,6 +25,10 @@ h2, h3, h4 {
 	font-family: $heading;
 }
 
+#error-container { display: none; }
+
+.show-errors { display: inline-block !important; }
+
 #nicknameCon {
 	background-color: #000;
 	text-align: center;

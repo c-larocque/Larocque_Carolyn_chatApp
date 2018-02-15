@@ -27,12 +27,14 @@
 		</div>
 	</div>
 
-	<div id = "error-container"></div>
+	<div id="error-container">
+			<span>That username exists, please enter another</span>
       <input id = "name" type = "text" name = "name" value = ""
          placeholder = "Enter your name!">
       <button type = "button" name = "button" onclick = "setUsername()">
          Let me chat!
       </button>
+	</div>
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/main.js"></script>
