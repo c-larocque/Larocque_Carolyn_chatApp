@@ -18,6 +18,8 @@ const server = app.listen(3000, function() {
 	console.log('listening on localhost:3000');
 });
 
+const users = [];
+
 io.attach(server);
 
 var numClients = 0;
@@ -26,18 +28,19 @@ var numClients = 0;
 io.on('connection', function(socket) {
 	console.log('a user has connected');
 
-	// socket.on('room', function(room) {
-	// 	socket.join(room);
-	// });
+	socket.on('room', function(room) {
+		socket.join(room);
+	});
 
-	// socket.on('setUsername', function(data) {
-  //     if(users.indexOf(data) > -1) {
-  //        users.push(data);
-  //        socket.emit('userSet', {username: data});
-  //     } else {
-  //        socket.emit('userExists', data + ' username is taken! Try some other username.');
-  //     }
-  //  });
+	socket.on('setUsername', function(data) {
+      if(users.indexOf(data) > -1) {
+				console.log('Username coming from client ', data);
+         users.push(data);
+         socket.emit('userSet', {username: data});
+      } else {
+         socket.emit('userExists', data + ' username is taken! Try some other username.');
+      }
+   });
 
 	io.emit('chat message', { for: 'everyone', message: `${socket.id} has joined the chat!` });
 

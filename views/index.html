@@ -15,6 +15,7 @@
 		<h2>Chatroom #1</h2>
 		<div id="usersPanel">
 			<p class="online">Users Online:</p>
+			<ul class="userList"></ul>
 			<p class="typing"></p>
 		</div>
 		<div id="messagesPanel">
@@ -26,14 +27,14 @@
 		</div>
 	</div>
 
-	<!--<div id = "error-container"></div>
+	<div id = "error-container"></div>
       <input id = "name" type = "text" name = "name" value = ""
          placeholder = "Enter your name!">
       <button type = "button" name = "button" onclick = "setUsername()">
          Let me chat!
-      </button>-->
+      </button>
 
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="js/main.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

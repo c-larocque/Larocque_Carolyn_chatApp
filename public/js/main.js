@@ -6,10 +6,13 @@
 			chatForm 	= document.querySelector('form'),
 			nameInput	= document.querySelector('.nickname'),
 			nickName 	= null,
-			chatMessage = chatForm.querySelector('.message');
+			chatMessage = chatForm.querySelector('.message'),
+			userList = document.querySelector('.userList');
 
 	function setNickname() {
 		nickName = this.value;
+		console.log(nickName);
+		//socket.emit('setUsername', this.value);
 	}
 
 	// var room = "abc123";
@@ -22,19 +25,19 @@
 		console.log('Incoming message:', data);
 	});
 
-	// function setUsername() {
-  //        socket.emit('setUsername', document.getElementById('name').value);
-  //     };
-  //     var user;
-  //     socket.on('userExists', function(data) {
-  //        document.getElementById('error-container').innerHTML = data;
-  //     });
-  //     socket.on('userSet', function(data) {
-  //        user = data.username;
-  //        document.body.innerHTML = '<input type = "text" id = "message">\
-  //        <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
-  //        <div id = "message-container"></div>';
-  //     });
+	function setUsername() {
+         socket.emit('setUsername', document.getElementById('name').value);
+      };
+      var user;
+      socket.on('userExists', function(data) {
+         document.getElementById('error-container').innerHTML = data;
+      });
+      socket.on('userSet', function(data) {
+         user = data.username;
+         document.body.innerHTML = '<input type = "text" id = "message">\
+         <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
+         <div id = "message-container"></div>';
+      });
 
       function sendMessage() {
          var msg = document.getElementById('message').value;
@@ -75,6 +78,11 @@
 		messageList.innerHTML += newMsg;
 	}
 
+	function addUserToList(user) {
+		let newUser = `<li>${user}</li>`;
+		userList.innerHTML += newUser;
+	}
+
   // socket.on('stats', function(data) {
   //     console.log('Connected clients:', data.numClients);
   // });
@@ -83,4 +91,5 @@
 	chatForm.addEventListener('submit', handleSendMessage, false);
 	socket.addEventListener('chat message', appendMessage, false);
 	socket.addEventListener('disconnect message', appendDMessage, false);
+	socket.addEventListener('userSet', addUserToList, false);
 })();
