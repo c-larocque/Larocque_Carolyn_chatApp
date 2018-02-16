@@ -1,4 +1,4 @@
-## Requirements / Getting Set Up
+## Welcome to the Socket.io Chat Application
 This project contains a Chat Application that was created by Node, NPM and Express. It allows you to enter you nickname and then talk with other individuals in this open source application.
 
 ### To get started
